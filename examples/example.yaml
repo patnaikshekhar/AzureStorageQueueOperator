@@ -1,0 +1,10 @@
+apiVersion: azure.microsoft.com/v1alpha1
+kind: StorageQueue
+metadata:
+  name: myqueue
+spec:
+  storageAccountName: azqueueoperator
+  connectionStringSecretRef:
+    name: my-storage-secret
+    key: my-key
+  usePodIdentity: false 
