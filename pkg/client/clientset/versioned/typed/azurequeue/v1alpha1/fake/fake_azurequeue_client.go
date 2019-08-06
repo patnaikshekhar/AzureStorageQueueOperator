@@ -19,22 +19,22 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1"
+	v1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeFooV1alpha1 struct {
+type FakeAzureV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeFooV1alpha1) AzureQueues(namespace string) v1alpha1.AzureQueueInterface {
+func (c *FakeAzureV1alpha1) AzureQueues(namespace string) v1alpha1.AzureQueueInterface {
 	return &FakeAzureQueues{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeFooV1alpha1) RESTClient() rest.Interface {
+func (c *FakeAzureV1alpha1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

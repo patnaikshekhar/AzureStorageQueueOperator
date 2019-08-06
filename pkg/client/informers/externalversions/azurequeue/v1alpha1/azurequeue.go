@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	azurequeuev1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/apis/azurequeue/v1alpha1"
-	versioned "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/patnaikshekhar/azure_queue_operator/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/client/listers/azurequeue/v1alpha1"
+	azurequeuev1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/apis/azurequeue/v1alpha1"
+	versioned "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/listers/azurequeue/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -61,13 +61,13 @@ func NewFilteredAzureQueueInformer(client versioned.Interface, namespace string,
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.FooV1alpha1().AzureQueues(namespace).List(options)
+				return client.AzureV1alpha1().AzureQueues(namespace).List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.FooV1alpha1().AzureQueues(namespace).Watch(options)
+				return client.AzureV1alpha1().AzureQueues(namespace).Watch(options)
 			},
 		},
 		&azurequeuev1alpha1.AzureQueue{},

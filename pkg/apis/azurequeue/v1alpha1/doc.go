@@ -1,5 +1,5 @@
 // +k8s:deepcopy-gen=package
 // +k8s:defaulter-gen=TypeMeta
-// +groupName=foo.com
+// +groupName=azure.microsoft.com
 
-package v1
+package v1alpha1

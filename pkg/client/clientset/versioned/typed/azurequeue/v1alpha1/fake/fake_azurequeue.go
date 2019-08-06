@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/apis/azurequeue/v1alpha1"
+	v1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/apis/azurequeue/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -30,13 +30,13 @@ import (
 
 // FakeAzureQueues implements AzureQueueInterface
 type FakeAzureQueues struct {
-	Fake *FakeFooV1alpha1
+	Fake *FakeAzureV1alpha1
 	ns   string
 }
 
-var azurequeuesResource = schema.GroupVersionResource{Group: "foo.com", Version: "v1alpha1", Resource: "azurequeues"}
+var azurequeuesResource = schema.GroupVersionResource{Group: "azure.microsoft.com", Version: "v1alpha1", Resource: "azurequeues"}
 
-var azurequeuesKind = schema.GroupVersionKind{Group: "foo.com", Version: "v1alpha1", Kind: "AzureQueue"}
+var azurequeuesKind = schema.GroupVersionKind{Group: "azure.microsoft.com", Version: "v1alpha1", Kind: "AzureQueue"}
 
 // Get takes name of the azureQueue, and returns the corresponding azureQueue object, and an error if there is any.
 func (c *FakeAzureQueues) Get(name string, options v1.GetOptions) (result *v1alpha1.AzureQueue, err error) {

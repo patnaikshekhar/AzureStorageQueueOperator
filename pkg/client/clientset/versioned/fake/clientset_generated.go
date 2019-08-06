@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned"
-	foov1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1"
-	fakefoov1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1/fake"
+	clientset "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned"
+	azurev1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1"
+	fakeazurev1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned/typed/azurequeue/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -76,7 +76,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// FooV1alpha1 retrieves the FooV1alpha1Client
-func (c *Clientset) FooV1alpha1() foov1alpha1.FooV1alpha1Interface {
-	return &fakefoov1alpha1.FakeFooV1alpha1{Fake: &c.Fake}
+// AzureV1alpha1 retrieves the AzureV1alpha1Client
+func (c *Clientset) AzureV1alpha1() azurev1alpha1.AzureV1alpha1Interface {
+	return &fakeazurev1alpha1.FakeAzureV1alpha1{Fake: &c.Fake}
 }

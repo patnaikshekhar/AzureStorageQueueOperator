@@ -21,8 +21,8 @@ package v1alpha1
 import (
 	"time"
 
-	v1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/apis/azurequeue/v1alpha1"
-	scheme "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned/scheme"
+	v1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/apis/azurequeue/v1alpha1"
+	scheme "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -56,7 +56,7 @@ type azureQueues struct {
 }
 
 // newAzureQueues returns a AzureQueues
-func newAzureQueues(c *FooV1alpha1Client, namespace string) *azureQueues {
+func newAzureQueues(c *AzureV1alpha1Client, namespace string) *azureQueues {
 	return &azureQueues{
 		client: c.RESTClient(),
 		ns:     namespace,

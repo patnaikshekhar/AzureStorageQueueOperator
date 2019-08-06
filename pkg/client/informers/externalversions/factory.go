@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/patnaikshekhar/azure_queue_operator/pkg/client/clientset/versioned"
-	azurequeue "github.com/patnaikshekhar/azure_queue_operator/pkg/client/informers/externalversions/azurequeue"
-	internalinterfaces "github.com/patnaikshekhar/azure_queue_operator/pkg/client/informers/externalversions/internalinterfaces"
+	versioned "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/clientset/versioned"
+	azurequeue "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/informers/externalversions/azurequeue"
+	internalinterfaces "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/client/informers/externalversions/internalinterfaces"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Foo() azurequeue.Interface
+	Azure() azurequeue.Interface
 }
 
-func (f *sharedInformerFactory) Foo() azurequeue.Interface {
+func (f *sharedInformerFactory) Azure() azurequeue.Interface {
 	return azurequeue.New(f, f.namespace, f.tweakListOptions)
 }

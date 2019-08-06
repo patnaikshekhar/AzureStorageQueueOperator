@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/patnaikshekhar/azure_queue_operator/pkg/apis/azurequeue/v1alpha1"
+	v1alpha1 "github.com/patnaikshekhar/AzureStorageQueueOperator/pkg/apis/azurequeue/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -52,9 +52,9 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=foo.com, Version=v1alpha1
+	// Group=azure.microsoft.com, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("azurequeues"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Foo().V1alpha1().AzureQueues().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Azure().V1alpha1().AzureQueues().Informer()}, nil
 
 	}
 

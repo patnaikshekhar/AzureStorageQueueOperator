@@ -7,4 +7,4 @@ spec:
   connectionStringSecretRef:
     name: my-storage-secret
     key: my-key
-  usePodIdentity: false 
+  usePodIdentity: aadc 
