@@ -327,7 +327,7 @@
   revision = "6fa4771c83b36b02580b91137a4f7daf13201b24"
 
 [[projects]]
-  digest = "1:78d01de498f1307cf31f8b6d98c84f8537dcdb55d5916709ead1aeed30b17443"
+  digest = "1:437ad380ee57fdcd335ba094c9108803965ef7b35534178cf6b51e7c2398e9b1"
   name = "k8s.io/client-go"
   packages = [
     "discovery",
@@ -355,7 +355,8 @@
     "util/flowcontrol",
     "util/homedir",
     "util/keyutil",
-    "util/retry"
+    "util/retry",
+    "util/workqueue"
   ]
   pruneopts = "UT"
   revision = "78d2af792babf2dd937ba2e2a8d99c753a5eda89"
@@ -407,6 +408,7 @@
     "k8s.io/apimachinery/pkg/runtime/serializer",
     "k8s.io/apimachinery/pkg/types",
     "k8s.io/apimachinery/pkg/util/runtime",
+    "k8s.io/apimachinery/pkg/util/wait",
     "k8s.io/apimachinery/pkg/watch",
     "k8s.io/client-go/discovery",
     "k8s.io/client-go/discovery/fake",
@@ -414,7 +416,8 @@
     "k8s.io/client-go/testing",
     "k8s.io/client-go/tools/cache",
     "k8s.io/client-go/tools/clientcmd",
-    "k8s.io/client-go/util/flowcontrol"
+    "k8s.io/client-go/util/flowcontrol",
+    "k8s.io/client-go/util/workqueue"
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

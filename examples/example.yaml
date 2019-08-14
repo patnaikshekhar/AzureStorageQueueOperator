@@ -1,5 +1,5 @@
 apiVersion: azure.microsoft.com/v1alpha1
-kind: StorageQueue
+kind: AzureQueue
 metadata:
   name: myqueue
 spec:
