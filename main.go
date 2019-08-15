@@ -35,7 +35,10 @@ func main() {
 	client := versioned.NewForConfigOrDie(config)
 
 	sharedinformers := informers.NewSharedInformerFactory(client, 10*time.Minute)
-	c := controller.NewAzureQueueController(client, sharedinformers.Azure().V1alpha1().AzureQueues())
+	c := controller.NewAzureQueueController(
+		client,
+		sharedinformers.Azure().V1alpha1().AzureQueues(),
+	)
 
 	sharedinformers.Start(nil)
 	c.Run(make(chan struct{}))

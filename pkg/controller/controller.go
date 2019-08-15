@@ -27,10 +27,15 @@ type AzureStorageQueueController struct {
 	queue           workqueue.RateLimitingInterface
 }
 
-func NewAzureQueueController(client *azurev1alpha1.Clientset, queueInformer informers.AzureQueueInformer) AzureStorageQueueController {
+// NewAzureQueueController creates a new queue controller
+func NewAzureQueueController(
+	client *azurev1alpha1.Clientset,
+	queueInformer informers.AzureQueueInformer) AzureStorageQueueController {
 
 	c := AzureStorageQueueController{
-		queue: workqueue.NewNamedRateLimitingQueue(workqueue.DefaultControllerRateLimiter(), "azqueuesync"),
+		azqueueInformer: queueInformer,
+		azqueueLister:   queueInformer.Lister(),
+		queue:           workqueue.NewNamedRateLimitingQueue(workqueue.DefaultControllerRateLimiter(), "azqueuesync"),
 	}
 
 	queueInformer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
@@ -129,7 +134,9 @@ func (c *AzureStorageQueueController) doSync(key string) error {
 func (c *AzureStorageQueueController) createQueue(obj *v1alpha1.AzureQueue) error {
 
 	connectionString := c.getSecret(
-		obj.Spec.ConnectionStringSecretRef.Name, obj.Spec.ConnectionStringSecretRef.Key)
+		obj.ObjectMeta.Namespace,
+		obj.Spec.ConnectionStringSecretRef.Name,
+		obj.Spec.ConnectionStringSecretRef.Key)
 
 	accountName, accountKey, err := c.parseConnectionString(connectionString)
 
@@ -184,4 +191,8 @@ func (c *AzureStorageQueueController) parseConnectionString(connectionString str
 	}
 
 	return name, key, nil
+}
+
+func (c *AzureStorageQueueController) getSecret(namespace string, name string, key string) string {
+
 }
